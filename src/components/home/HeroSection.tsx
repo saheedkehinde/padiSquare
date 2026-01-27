@@ -66,12 +66,27 @@ export function HeroSection({
                 size="lg" 
                 className="h-12 px-6 text-sm font-semibold rounded-xl bg-foreground text-background hover:bg-foreground/90"
               >
-                Create listing
+              Create listing
               </Button>
+            </div>
+            
+            {/* Mobile Hero Illustration */}
+            <div className="relative flex justify-center lg:hidden animate-fade-in pt-2">
+              <div className="relative">
+                <img
+                  src={heroIllustration}
+                  alt="PadiSquare users"
+                  className="h-auto w-full max-w-xs object-contain"
+                />
+                <div className="absolute top-2 right-2 flex items-center gap-1.5 rounded-full bg-primary px-2.5 py-1 shadow-lg">
+                  <div className="h-1.5 w-1.5 rounded-full bg-primary-foreground animate-pulse" />
+                  <span className="text-[10px] font-medium text-primary-foreground">Verified</span>
+                </div>
+              </div>
             </div>
           </div>
           
-          {/* Right - Hero Illustration */}
+          {/* Right - Hero Illustration (Desktop) */}
           <div className="relative hidden lg:flex justify-center animate-fade-in" style={{ animationDelay: "0.1s" }}>
             <div className="relative">
               <img
