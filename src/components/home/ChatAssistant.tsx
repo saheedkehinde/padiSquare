@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { X, Send, MessageCircle, Loader2 } from "lucide-react";
+import { X, Send, MessageCircle, Loader2, Sparkles, Tag, Smartphone, Car, Shirt } from "lucide-react";
 import { useChat } from "@/hooks/useChat";
 import { cn } from "@/lib/utils";
 
@@ -7,6 +7,14 @@ interface ChatAssistantProps {
   isOpen: boolean;
   onClose: () => void;
 }
+
+const quickActions = [
+  { icon: Smartphone, label: "Latest Electronics", query: "Show me the latest Electronics products" },
+  { icon: Shirt, label: "Fashion deals", query: "What clothing items are available?" },
+  { icon: Car, label: "Browse Vehicles", query: "Show me available vehicles" },
+  { icon: Tag, label: "Under ₦500,000", query: "Find deals under ₦500,000" },
+  { icon: Sparkles, label: "Top picks", query: "What are your top recommended products?" },
+];
 
 export function ChatAssistant({ isOpen, onClose }: ChatAssistantProps) {
   const [input, setInput] = useState("");
@@ -33,6 +41,14 @@ export function ChatAssistant({ isOpen, onClose }: ChatAssistantProps) {
     sendMessage(input.trim());
     setInput("");
   };
+
+  const handleQuickAction = (query: string) => {
+    if (isLoading) return;
+    sendMessage(query);
+  };
+
+  // Show quick actions only when there's just the initial message
+  const showQuickActions = messages.length === 1 && messages[0].role === "assistant";
 
   if (!isOpen) return null;
 
@@ -85,6 +101,27 @@ export function ChatAssistant({ isOpen, onClose }: ChatAssistantProps) {
               </div>
             </div>
           ))}
+
+          {/* Quick Actions */}
+          {showQuickActions && (
+            <div className="space-y-2 pt-2">
+              <p className="text-xs text-muted-foreground font-medium">Quick actions:</p>
+              <div className="flex flex-wrap gap-2">
+                {quickActions.map((action) => (
+                  <button
+                    key={action.label}
+                    onClick={() => handleQuickAction(action.query)}
+                    disabled={isLoading}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 text-xs font-medium text-foreground hover:bg-accent hover:border-primary/30 transition-all duration-200 disabled:opacity-50"
+                  >
+                    <action.icon className="h-3 w-3 text-primary" />
+                    {action.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
           {isLoading && messages[messages.length - 1]?.role === "user" && (
             <div className="flex gap-3">
               <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full gradient-gold">
