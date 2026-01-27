@@ -54,10 +54,10 @@
     --shadow-card: 0 2px 8px -2px hsl(145 10% 20% / 0.08), 0 4px 16px -4px hsl(145 10% 20% / 0.06);
     --shadow-elevated: 0 20px 25px -5px hsl(145 10% 20% / 0.1), 0 8px 10px -6px hsl(145 10% 20% / 0.08);
     
-    /* Glow Effects */
-    --glow-primary: 0 0 20px hsl(145 78% 35% / 0.4), 0 0 40px hsl(145 78% 35% / 0.2);
-    --glow-primary-hover: 0 0 25px hsl(145 78% 35% / 0.5), 0 0 50px hsl(145 78% 35% / 0.3);
-    --glow-card: 0 0 15px hsl(145 78% 35% / 0.15), 0 0 30px hsl(145 78% 35% / 0.1);
+    /* Glow Effects - Subtle */
+    --glow-primary: 0 0 10px hsl(145 78% 35% / 0.2), 0 0 20px hsl(145 78% 35% / 0.1);
+    --glow-primary-hover: 0 0 15px hsl(145 78% 35% / 0.3), 0 0 30px hsl(145 78% 35% / 0.15);
+    --glow-card: 0 0 10px hsl(145 78% 35% / 0.1), 0 0 20px hsl(145 78% 35% / 0.05);
 
     /* Sidebar */
     --sidebar-background: 0 0% 100%;
@@ -112,9 +112,10 @@
     --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.5), 0 4px 6px -4px hsl(0 0% 0% / 0.4);
     --shadow-card: 0 2px 8px -2px hsl(0 0% 0% / 0.4), 0 4px 16px -4px hsl(0 0% 0% / 0.3);
     
-    --glow-primary: 0 0 20px hsl(145 78% 45% / 0.5), 0 0 40px hsl(145 78% 45% / 0.25);
-    --glow-primary-hover: 0 0 25px hsl(145 78% 45% / 0.6), 0 0 50px hsl(145 78% 45% / 0.35);
-    --glow-card: 0 0 15px hsl(145 78% 45% / 0.2), 0 0 30px hsl(145 78% 45% / 0.12);
+    /* Glow Effects - Subtle */
+    --glow-primary: 0 0 10px hsl(145 78% 45% / 0.25), 0 0 20px hsl(145 78% 45% / 0.12);
+    --glow-primary-hover: 0 0 15px hsl(145 78% 45% / 0.35), 0 0 30px hsl(145 78% 45% / 0.18);
+    --glow-card: 0 0 10px hsl(145 78% 45% / 0.1), 0 0 20px hsl(145 78% 45% / 0.06);
     
     --sidebar-background: 148 100% 9%;
     --sidebar-foreground: 150 10% 95%;
