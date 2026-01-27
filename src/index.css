@@ -72,12 +72,10 @@
 
   .dark {
     /* Dark Mode Background Gradient Colors */
-    /* #012410 = RGB(1, 36, 16) = HSL(146, 95%, 7%) */
-    /* #001c0d = RGB(0, 28, 13) = HSL(148, 100%, 5.5%) */
-    /* #002712 = RGB(0, 39, 18) = HSL(148, 100%, 8%) */
-    /* #003217 = RGB(0, 50, 23) = HSL(148, 100%, 10%) */
-    --background: 146 95% 7%;
-    --background-secondary: 148 100% 5.5%;
+    /* #00150a = RGB(0, 21, 10) = HSL(149, 100%, 4%) */
+    /* #001b0c = RGB(0, 27, 12) = HSL(147, 100%, 5%) */
+    --background: 149 100% 4%;
+    --background-secondary: 147 100% 5%;
     --foreground: 150 10% 95%;
 
     --card: 148 100% 10%;
@@ -106,8 +104,8 @@
     --ring: 145 78% 45%;
 
     --gradient-primary: linear-gradient(135deg, hsl(145 78% 40%) 0%, hsl(145 78% 32%) 100%);
-    --gradient-hero: linear-gradient(180deg, hsl(146 95% 7%) 0%, hsl(148 100% 5.5%) 100%);
-    --gradient-background: linear-gradient(135deg, hsl(146 95% 7%) 0%, hsl(148 100% 5.5%) 50%, hsl(146 95% 7%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(149 100% 4%) 0%, hsl(147 100% 5%) 100%);
+    --gradient-background: linear-gradient(135deg, hsl(149 100% 4%) 0%, hsl(147 100% 5%) 50%, hsl(149 100% 4%) 100%);
     
     --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.3);
     --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.4), 0 2px 4px -2px hsl(0 0% 0% / 0.3);
@@ -143,7 +141,7 @@
   }
 
   .dark body {
-    background: linear-gradient(180deg, hsl(146 95% 7%) 0%, hsl(148 100% 5.5%) 100%);
+    background: linear-gradient(180deg, hsl(149 100% 4%) 0%, hsl(147 100% 5%) 100%);
     background-attachment: fixed;
   }
 }
