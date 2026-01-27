@@ -3,18 +3,25 @@ import { getAllVendors } from "@/data/mockData";
 import { CheckCircle, ArrowRight, Store, ShieldCheck, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import logoLight from "@/assets/padis-logo-light.svg";
+import logoDark from "@/assets/padis-logo-dark.svg";
+import { useTheme } from "@/hooks/useTheme";
 
 const Index = () => {
   const vendors = getAllVendors();
+  const { theme } = useTheme();
 
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="sticky top-0 z-50 w-full border-b border-border bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80">
         <div className="container flex h-16 items-center justify-between">
-          <img src={logoLight} alt="PadiSquare" className="h-8 w-auto" />
-          <Button className="gradient-primary">Sign up as a vendor</Button>
+          <img src={theme === "dark" ? logoDark : logoLight} alt="PadiSquare" className="h-8 w-auto" />
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <Button className="gradient-primary">Sign up as a vendor</Button>
+          </div>
         </div>
       </header>
 
@@ -159,7 +166,7 @@ const Index = () => {
       <footer className="border-t border-border bg-card py-12">
         <div className="container">
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
-            <img src={logoLight} alt="PadiSquare" className="h-8 w-auto" />
+            <img src={theme === "dark" ? logoDark : logoLight} alt="PadiSquare" className="h-8 w-auto" />
             <p className="text-sm text-muted-foreground">
               © 2024 PadiSquare. All rights reserved.
             </p>
