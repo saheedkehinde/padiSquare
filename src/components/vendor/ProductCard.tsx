@@ -5,11 +5,15 @@ import { Card, CardContent } from "@/components/ui/card";
 
 interface ProductCardProps {
   product: Product;
+  onClick?: () => void;
 }
 
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ product, onClick }: ProductCardProps) {
   return (
-    <Card className="group overflow-hidden border-border bg-card shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1">
+    <Card 
+      className="group overflow-hidden border-border bg-card shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+      onClick={onClick}
+    >
       <div className="relative aspect-square overflow-hidden bg-muted">
         <img
           src={product.image || "/placeholder.svg"}

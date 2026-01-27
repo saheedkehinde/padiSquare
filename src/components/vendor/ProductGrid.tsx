@@ -4,9 +4,10 @@ import { Package } from "lucide-react";
 
 interface ProductGridProps {
   products: Product[];
+  onProductClick?: (product: Product) => void;
 }
 
-export function ProductGrid({ products }: ProductGridProps) {
+export function ProductGrid({ products, onProductClick }: ProductGridProps) {
   if (products.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-16 text-center">
@@ -29,7 +30,10 @@ export function ProductGrid({ products }: ProductGridProps) {
           className="animate-fade-in"
           style={{ animationDelay: `${index * 0.05}s` }}
         >
-          <ProductCard product={product} />
+          <ProductCard 
+            product={product} 
+            onClick={() => onProductClick?.(product)}
+          />
         </div>
       ))}
     </div>

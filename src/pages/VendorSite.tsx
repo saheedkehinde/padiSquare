@@ -6,6 +6,7 @@ import { CategoryTabs } from "@/components/vendor/CategoryTabs";
 import { SearchBar } from "@/components/vendor/SearchBar";
 import { SortSelect } from "@/components/vendor/SortSelect";
 import { ProductGrid } from "@/components/vendor/ProductGrid";
+import { ProductDetailModal } from "@/components/vendor/ProductDetailModal";
 import { Pagination } from "@/components/vendor/Pagination";
 import { LoadingState } from "@/components/vendor/LoadingState";
 import { ErrorState } from "@/components/vendor/ErrorState";
@@ -14,6 +15,7 @@ import {
   filterProducts,
   sortProducts,
   type SortOption,
+  type Product,
 } from "@/data/mockData";
 
 const ITEMS_PER_PAGE = 8;
@@ -25,6 +27,13 @@ export default function VendorSite() {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOption, setSortOption] = useState<SortOption>("recent");
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleProductClick = (product: Product) => {
+    setSelectedProduct(product);
+    setIsModalOpen(true);
+  };
 
   const vendor = vendorSlug ? getVendorBySlug(vendorSlug) : undefined;
 
@@ -120,7 +129,10 @@ export default function VendorSite() {
               </h2>
             </div>
             
-            <ProductGrid products={paginatedProducts} />
+            <ProductGrid 
+              products={paginatedProducts} 
+              onProductClick={handleProductClick}
+            />
             
             <Pagination
               currentPage={currentPage}
@@ -130,6 +142,14 @@ export default function VendorSite() {
           </div>
         </section>
       </main>
+      
+      {/* Product Detail Modal */}
+      <ProductDetailModal
+        product={selectedProduct}
+        vendor={vendor}
+        open={isModalOpen}
+        onOpenChange={setIsModalOpen}
+      />
       
       {/* Footer */}
       <footer className="border-t border-border bg-card py-8">
