@@ -13,10 +13,10 @@ export function AiAssistantSection({ onOpenChat }: AiAssistantSectionProps) {
           {/* Left Content */}
           <div className="flex flex-col items-center md:items-start gap-3">
             <div className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full gradient-primary glow-primary">
-                <Sparkles className="h-5 w-5 text-primary-foreground" />
-              </div>
-              <h2 className="text-xl font-bold text-foreground">AI Shopping Assistant</h2>
+            <div className="flex h-10 w-10 items-center justify-center rounded-full gradient-primary glow-primary">
+              <Sparkles className="h-5 w-5 text-primary-foreground" />
+            </div>
+            <h2 className="text-xl font-bold text-foreground">PadiSquare AI Assistant</h2>
             </div>
             <p className="text-sm text-muted-foreground max-w-md">
               Get personalized product recommendations, find the best deals, and discover verified vendors with our intelligent assistant.
