@@ -17,6 +17,7 @@ export interface Product {
   category: string;
   createdAt: string;
   verified: boolean;
+  vendor?: string;
 }
 
 export interface Vendor {

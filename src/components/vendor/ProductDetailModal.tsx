@@ -12,7 +12,7 @@ import { Badge } from "@/components/ui/badge";
 
 interface ProductDetailModalProps {
   product: Product | null;
-  vendor: Vendor;
+  vendor?: Vendor;
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }
@@ -92,15 +92,15 @@ export function ProductDetailModal({
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
                 <span className="text-lg font-bold text-primary">
-                  {vendor.name.charAt(0)}
+                  {(vendor?.name || product.vendor || "V").charAt(0)}
                 </span>
               </div>
               <div className="flex-1">
                 <div className="flex items-center gap-2">
                   <span className="font-semibold text-foreground">
-                    {vendor.name}
+                    {vendor?.name || product.vendor || "Verified Vendor"}
                   </span>
-                  {vendor.verified && (
+                  {(vendor?.verified || product.verified) && (
                     <CheckCircle className="h-4 w-4 text-primary" />
                   )}
                 </div>
@@ -115,7 +115,7 @@ export function ProductDetailModal({
           <div className="space-y-2">
             <h4 className="font-semibold text-foreground">Description</h4>
             <p className="text-muted-foreground leading-relaxed">
-              This {product.name} is available from {vendor.name}. 
+              This {product.name} is available from {vendor?.name || product.vendor || "our verified vendor"}. 
               {product.verified 
                 ? " This product has been verified for authenticity and quality." 
                 : " Contact the vendor for more details about this product."}
