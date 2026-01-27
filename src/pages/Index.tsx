@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useTheme } from "@/hooks/useTheme";
 import { HeroSection } from "@/components/home/HeroSection";
+import { AiAssistantSection } from "@/components/home/AiAssistantSection";
 import { ProductListing } from "@/components/home/ProductListing";
 import { ChatAssistant, ChatAssistantTrigger } from "@/components/home/ChatAssistant";
 import { BottomNav } from "@/components/home/BottomNav";
@@ -54,6 +55,9 @@ const Index = () => {
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
       />
+
+      {/* AI Assistant Section */}
+      <AiAssistantSection onOpenChat={() => setIsChatOpen(true)} />
 
       {/* Verified Listings */}
       <section className="container py-6">
