@@ -1,7 +1,8 @@
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import type { Product } from "@/data/mockData";
 import { formatPrice } from "@/data/mockData";
-import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 // Import product images
 import iphone15Pro from "@/assets/products/iphone-15-pro.jpg";
@@ -28,11 +29,24 @@ interface ProductListingProps {
 }
 
 export function ProductListing({ products, onProductClick }: ProductListingProps) {
+  const navigate = useNavigate();
+  
   return (
     <div className="space-y-4">
-      <div className="flex items-center gap-2">
-        <CheckCircle className="h-5 w-5 text-primary" />
-        <h2 className="text-lg font-bold text-foreground">Verified Listings</h2>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <CheckCircle className="h-5 w-5 text-primary" />
+          <h2 className="text-lg font-bold text-foreground">Verified Listings</h2>
+        </div>
+        <Button 
+          variant="ghost" 
+          size="sm"
+          onClick={() => navigate("/products")}
+          className="text-primary hover:text-primary/80 gap-1"
+        >
+          View All
+          <ArrowRight className="h-4 w-4" />
+        </Button>
       </div>
       
       <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
