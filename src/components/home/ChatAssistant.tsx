@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { X, Search, ArrowDownUp, MapPin, Mail, MessageCircle } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import { X, Send, MessageCircle, Loader2 } from "lucide-react";
+import { useChat } from "@/hooks/useChat";
 import { cn } from "@/lib/utils";
 
 interface ChatAssistantProps {
@@ -7,21 +8,39 @@ interface ChatAssistantProps {
   onClose: () => void;
 }
 
-const quickActions = [
-  { icon: Search, label: "Search products" },
-  { icon: ArrowDownUp, label: "Sort products" },
-  { icon: MapPin, label: "Deals & offers" },
-  { icon: Mail, label: "Sign up as vendor" },
-];
-
 export function ChatAssistant({ isOpen, onClose }: ChatAssistantProps) {
+  const [input, setInput] = useState("");
+  const { messages, isLoading, sendMessage } = useChat();
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  // Scroll to bottom when messages change
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+  // Focus input when chat opens
+  useEffect(() => {
+    if (isOpen) {
+      inputRef.current?.focus();
+    }
+  }, [isOpen]);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!input.trim() || isLoading) return;
+    
+    sendMessage(input.trim());
+    setInput("");
+  };
+
   if (!isOpen) return null;
 
   return (
-    <div className="fixed bottom-20 left-4 right-4 z-50 md:left-auto md:right-6 md:w-80 animate-fade-in">
-      <div className="rounded-2xl bg-card border border-border shadow-elevated overflow-hidden">
+    <div className="fixed bottom-20 left-4 right-4 z-50 md:left-auto md:right-6 md:w-96 animate-fade-in">
+      <div className="rounded-2xl bg-card border border-border shadow-elevated overflow-hidden flex flex-col max-h-[70vh]">
         {/* Header */}
-        <div className="flex items-center justify-between p-3 bg-primary/5 border-b border-border">
+        <div className="flex items-center justify-between p-3 bg-primary/5 border-b border-border shrink-0">
           <div className="flex items-center gap-2">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg gradient-primary">
               <MessageCircle className="h-4 w-4 text-primary-foreground" />
@@ -39,33 +58,67 @@ export function ChatAssistant({ isOpen, onClose }: ChatAssistantProps) {
           </button>
         </div>
 
-        {/* Chat Content */}
-        <div className="p-4 space-y-4">
-          {/* Bot Message */}
-          <div className="flex gap-3">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full gradient-gold">
-              <span className="text-lg">🤖</span>
-            </div>
-            <div className="rounded-2xl rounded-tl-none bg-muted p-3 max-w-[80%]">
-              <p className="text-sm text-foreground font-medium">
-                Hello! How can I assist you today?
-              </p>
-            </div>
-          </div>
-
-          {/* Quick Actions */}
-          <div className="space-y-2">
-            {quickActions.map((action) => (
-              <button
-                key={action.label}
-                className="flex w-full items-center gap-3 rounded-xl border border-border bg-background p-3 text-left hover:bg-accent hover:border-primary/30 transition-all duration-200"
+        {/* Messages */}
+        <div className="flex-1 overflow-y-auto p-4 space-y-4 min-h-[200px]">
+          {messages.map((message, index) => (
+            <div
+              key={index}
+              className={cn(
+                "flex gap-3",
+                message.role === "user" ? "flex-row-reverse" : "flex-row"
+              )}
+            >
+              {message.role === "assistant" && (
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full gradient-gold">
+                  <span className="text-sm">🤖</span>
+                </div>
+              )}
+              <div
+                className={cn(
+                  "rounded-2xl p-3 max-w-[80%]",
+                  message.role === "user"
+                    ? "bg-primary text-primary-foreground rounded-tr-none"
+                    : "bg-muted rounded-tl-none"
+                )}
               >
-                <action.icon className="h-4 w-4 text-primary" />
-                <span className="text-sm text-foreground">{action.label}</span>
-              </button>
-            ))}
-          </div>
+                <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+              </div>
+            </div>
+          ))}
+          {isLoading && messages[messages.length - 1]?.role === "user" && (
+            <div className="flex gap-3">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full gradient-gold">
+                <span className="text-sm">🤖</span>
+              </div>
+              <div className="rounded-2xl rounded-tl-none bg-muted p-3">
+                <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
+              </div>
+            </div>
+          )}
+          <div ref={messagesEndRef} />
         </div>
+
+        {/* Input */}
+        <form onSubmit={handleSubmit} className="p-3 border-t border-border shrink-0">
+          <div className="flex gap-2">
+            <input
+              ref={inputRef}
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="Type a message..."
+              disabled={isLoading}
+              className="flex-1 rounded-xl border border-border bg-background px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 disabled:opacity-50"
+            />
+            <button
+              type="submit"
+              disabled={!input.trim() || isLoading}
+              className="flex h-10 w-10 items-center justify-center rounded-xl gradient-primary text-primary-foreground disabled:opacity-50 transition-opacity"
+            >
+              <Send className="h-4 w-4" />
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );
