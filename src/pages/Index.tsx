@@ -8,7 +8,6 @@ import { ChatAssistant, ChatAssistantTrigger } from "@/components/home/ChatAssis
 import { BottomNav } from "@/components/home/BottomNav";
 import { ProductDetailModal } from "@/components/vendor/ProductDetailModal";
 import { CategoryPills } from "@/components/home/CategoryPills";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getAllVendors, categories, filterProducts, type Product } from "@/data/mockData";
 import logoLight from "@/assets/padis-logo-light.svg";
 import logoDark from "@/assets/padis-logo-dark.svg";
@@ -57,22 +56,20 @@ const Index = () => {
 
       {/* Verified Listings with Category Tabs */}
       <section className="container py-6">
-        <Card className="border-primary/20 shadow-card">
-          <CardHeader className="pb-4">
-            <CardTitle className="text-xl font-bold">Verified Listings</CardTitle>
+        <div className="rounded-2xl border-2 border-primary/30 bg-primary/5 p-6">
+          <div className="mb-4">
+            <h2 className="text-xl font-bold text-foreground mb-3">Verified Listings</h2>
             <CategoryPills
               categories={categories}
               activeCategory={activeCategory}
               onCategoryChange={setActiveCategory}
             />
-          </CardHeader>
-          <CardContent>
-            <ProductListing 
-              products={filteredProducts}
-              onProductClick={handleProductClick}
-            />
-          </CardContent>
-        </Card>
+          </div>
+          <ProductListing 
+            products={filteredProducts}
+            onProductClick={handleProductClick}
+          />
+        </div>
       </section>
 
       {/* Chat Assistant */}
