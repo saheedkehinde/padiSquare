@@ -20,7 +20,7 @@ export function HeroSection({
     <section className="relative overflow-hidden gradient-hero py-6 md:py-10">
       {/* Watermark Background */}
       <div 
-        className="absolute inset-0 pointer-events-none opacity-[0.12] dark:opacity-[0.18]"
+        className="absolute inset-0 pointer-events-none opacity-[0.12] dark:opacity-[0.18] animate-watermark-float"
         style={{
           backgroundImage: `url(${heroWatermark})`,
           backgroundSize: '120%',
