@@ -1,4 +1,4 @@
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, Star, MapPin, Clock } from "lucide-react";
 import type { Vendor } from "@/data/mockData";
 
 interface VendorHeroProps {
@@ -20,7 +20,7 @@ export function VendorHero({ vendor, heroImage }: VendorHeroProps) {
                   {vendor.name.charAt(0)}
                 </span>
               </div>
-              <div>
+                <div>
                 <div className="flex items-center gap-2">
                   <h1 className="text-2xl font-bold text-foreground md:text-3xl">
                     {vendor.name}
@@ -32,7 +32,18 @@ export function VendorHero({ vendor, heroImage }: VendorHeroProps) {
                     </span>
                   )}
                 </div>
-                <p className="text-sm text-muted-foreground">Official Store</p>
+                <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-1">
+                    <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                    <span className="font-medium text-foreground">{vendor.rating}</span>
+                    <span>({vendor.reviewCount} reviews)</span>
+                  </div>
+                  <span className="text-border">•</span>
+                  <div className="flex items-center gap-1">
+                    <MapPin className="h-3.5 w-3.5" />
+                    <span>{vendor.location}</span>
+                  </div>
+                </div>
               </div>
             </div>
             
@@ -47,9 +58,13 @@ export function VendorHero({ vendor, heroImage }: VendorHeroProps) {
               </div>
               <div className="flex items-center gap-2 rounded-lg bg-card px-4 py-2 shadow-card">
                 <span className="text-xl font-bold text-secondary">
-                  {vendor.products.filter(p => p.verified).length}
+                  {vendor.totalSales.toLocaleString()}
                 </span>
-                <span className="text-sm text-muted-foreground">Verified</span>
+                <span className="text-sm text-muted-foreground">Sales</span>
+              </div>
+              <div className="flex items-center gap-2 rounded-lg bg-card px-4 py-2 shadow-card">
+                <Clock className="h-4 w-4 text-muted-foreground" />
+                <span className="text-sm text-muted-foreground">{vendor.responseTime}</span>
               </div>
             </div>
           </div>
