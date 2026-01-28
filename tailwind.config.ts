@@ -113,7 +113,7 @@ export default {
         "slide-in": "slide-in 0.3s ease-out",
         "scale-in": "scale-in 0.2s ease-out",
         shimmer: "shimmer 2s infinite linear",
-        "watermark-float": "watermark-float 20s ease-in-out infinite",
+        "watermark-float": "watermark-float 15s ease-in-out infinite",
       },
     },
   },
