@@ -18,13 +18,23 @@ export function HeroSection({
 }: HeroSectionProps) {
   return (
     <section className="relative overflow-hidden gradient-hero py-6 md:py-10">
-      {/* Watermark Background */}
+      {/* Watermark Background - Desktop */}
       <div 
-        className="absolute inset-0 pointer-events-none opacity-[0.12] dark:opacity-[0.18] animate-watermark-float"
+        className="absolute inset-0 pointer-events-none opacity-[0.12] dark:opacity-[0.18] animate-watermark-float hidden md:block"
         style={{
           backgroundImage: `url(${heroWatermark})`,
           backgroundSize: '120%',
           backgroundPosition: 'center 30%',
+          backgroundRepeat: 'no-repeat',
+        }}
+      />
+      {/* Watermark Background - Mobile */}
+      <div 
+        className="absolute inset-0 pointer-events-none opacity-[0.08] dark:opacity-[0.12] animate-watermark-float md:hidden"
+        style={{
+          backgroundImage: `url(${heroWatermark})`,
+          backgroundSize: '80%',
+          backgroundPosition: 'center 40%',
           backgroundRepeat: 'no-repeat',
         }}
       />
