@@ -1,21 +1,8 @@
 import { Button } from "@/components/ui/button";
-import { CategoryPills } from "./CategoryPills";
 import heroIllustration from "@/assets/hero-illustration.png";
 import heroWatermark from "@/assets/hero-watermark.png";
 
-interface HeroSectionProps {
-  categories: string[];
-  activeCategory: string;
-  onCategoryChange: (category: string) => void;
-  searchQuery: string;
-  onSearchChange: (query: string) => void;
-}
-
-export function HeroSection({
-  categories,
-  activeCategory,
-  onCategoryChange,
-}: HeroSectionProps) {
+export function HeroSection() {
   return (
     <section className="relative overflow-hidden gradient-hero py-6 md:py-10">
       {/* Watermark Background - Desktop */}
@@ -56,12 +43,6 @@ export function HeroSection({
               </p>
             </div>
             
-            {/* Category Pills */}
-            <CategoryPills
-              categories={categories}
-              activeCategory={activeCategory}
-              onCategoryChange={onCategoryChange}
-            />
             
             {/* CTA Buttons */}
             <div className="flex flex-wrap items-center gap-3">

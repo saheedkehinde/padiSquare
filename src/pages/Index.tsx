@@ -7,6 +7,8 @@ import { ProductListing } from "@/components/home/ProductListing";
 import { ChatAssistant, ChatAssistantTrigger } from "@/components/home/ChatAssistant";
 import { BottomNav } from "@/components/home/BottomNav";
 import { ProductDetailModal } from "@/components/vendor/ProductDetailModal";
+import { CategoryPills } from "@/components/home/CategoryPills";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getAllVendors, categories, filterProducts, type Product } from "@/data/mockData";
 import logoLight from "@/assets/padis-logo-light.svg";
 import logoDark from "@/assets/padis-logo-dark.svg";
@@ -48,23 +50,29 @@ const Index = () => {
       </header>
 
       {/* Hero Section */}
-      <HeroSection
-        categories={categories}
-        activeCategory={activeCategory}
-        onCategoryChange={setActiveCategory}
-        searchQuery={searchQuery}
-        onSearchChange={setSearchQuery}
-      />
+      <HeroSection />
 
       {/* AI Assistant Section */}
       <AiAssistantSection onOpenChat={() => setIsChatOpen(true)} />
 
-      {/* Verified Listings */}
+      {/* Verified Listings with Category Tabs */}
       <section className="container py-6">
-        <ProductListing 
-          products={filteredProducts}
-          onProductClick={handleProductClick}
-        />
+        <Card className="border-primary/20 shadow-card">
+          <CardHeader className="pb-4">
+            <CardTitle className="text-xl font-bold">Verified Listings</CardTitle>
+            <CategoryPills
+              categories={categories}
+              activeCategory={activeCategory}
+              onCategoryChange={setActiveCategory}
+            />
+          </CardHeader>
+          <CardContent>
+            <ProductListing 
+              products={filteredProducts}
+              onProductClick={handleProductClick}
+            />
+          </CardContent>
+        </Card>
       </section>
 
       {/* Chat Assistant */}
