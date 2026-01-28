@@ -148,38 +148,46 @@
     letter-spacing: -0.011em;
   }
 
-  /* Headings */
+  /* Headings - Base styles */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display font-semibold tracking-tight text-foreground;
+    @apply font-display tracking-tight text-foreground;
     line-height: 1.2;
   }
 
   h1 {
-    @apply text-3xl md:text-4xl lg:text-5xl font-extrabold;
-    letter-spacing: -0.025em;
+    @apply text-3xl md:text-4xl lg:text-5xl;
+    font-weight: 800;
+    letter-spacing: -0.03em;
   }
 
   h2 {
-    @apply text-2xl md:text-3xl font-bold;
-    letter-spacing: -0.02em;
+    @apply text-2xl md:text-3xl;
+    font-weight: 700;
+    letter-spacing: -0.025em;
   }
 
   h3 {
-    @apply text-xl md:text-2xl font-semibold;
-    letter-spacing: -0.015em;
+    @apply text-xl md:text-2xl;
+    font-weight: 600;
+    letter-spacing: -0.02em;
   }
 
   h4 {
-    @apply text-lg md:text-xl font-semibold;
-    letter-spacing: -0.01em;
+    @apply text-lg md:text-xl;
+    font-weight: 600;
+    letter-spacing: -0.015em;
   }
 
   h5 {
-    @apply text-base md:text-lg font-medium;
+    @apply text-base md:text-lg;
+    font-weight: 500;
+    letter-spacing: -0.01em;
   }
 
   h6 {
-    @apply text-sm md:text-base font-medium;
+    @apply text-sm md:text-base;
+    font-weight: 500;
+    letter-spacing: -0.005em;
   }
 
   /* Paragraphs & Body Text */
