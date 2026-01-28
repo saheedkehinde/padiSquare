@@ -31,7 +31,7 @@ export function BottomNav({ activeTab }: BottomNavProps) {
               "flex flex-col items-center gap-1 px-4 py-2 rounded-xl transition-all duration-200",
               currentTab === item.id
                 ? "text-primary bg-primary/10"
-                : "text-primary hover:text-primary-foreground hover:bg-primary"
+                : "text-primary hover:text-foreground hover:bg-muted"
             )}
           >
             <item.icon className={cn(
