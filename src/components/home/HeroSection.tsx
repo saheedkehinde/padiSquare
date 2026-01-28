@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { CategoryPills } from "./CategoryPills";
 import heroIllustration from "@/assets/hero-illustration.png";
+import heroWatermark from "@/assets/hero-watermark.png";
 
 interface HeroSectionProps {
   categories: string[];
@@ -17,7 +18,17 @@ export function HeroSection({
 }: HeroSectionProps) {
   return (
     <section className="relative overflow-hidden gradient-hero py-6 md:py-10">
-      <div className="container">
+      {/* Watermark Background */}
+      <div 
+        className="absolute inset-0 pointer-events-none opacity-[0.04] dark:opacity-[0.08]"
+        style={{
+          backgroundImage: `url(${heroWatermark})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      />
+      <div className="container relative z-10">
         <div className="grid gap-6 lg:grid-cols-2 lg:items-center">
           {/* Left Content */}
           <div className="space-y-5 animate-fade-in">
