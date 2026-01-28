@@ -101,7 +101,7 @@ export function ProductListing({ products, onProductClick }: ProductListingProps
   }
   
   return (
-    <div className="rounded-2xl border-2 border-primary/30 bg-primary/5 p-6 glow-card space-y-6">
+    <div className="space-y-6">
       {/* Header */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-2">
@@ -190,17 +190,18 @@ export function ProductListing({ products, onProductClick }: ProductListingProps
                 <div
                   key={product.id}
                   onClick={() => onProductClick?.(product)}
-                  className="group cursor-pointer animate-fade-in"
+                  className="group cursor-pointer animate-fade-in bg-card rounded-md border border-border p-2 hover:border-primary/40 transition-all duration-300"
                   style={{ animationDelay: `${index * 0.05}s` }}
                 >
-                  <div className="relative aspect-square overflow-hidden rounded-xl bg-card border-2 border-primary/20 glow-card group-hover:border-primary/40 transition-all duration-300">
+                  <div className="relative aspect-square overflow-hidden rounded-md bg-muted">
                     <img
                       src={imageSrc}
                       alt={product.name}
+                      loading="lazy"
                       className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                     {product.verified && (
-                      <div className="absolute bottom-2 left-2 flex h-6 w-6 items-center justify-center rounded-full bg-primary shadow-md glow-primary">
+                      <div className="absolute bottom-2 left-2 flex h-6 w-6 items-center justify-center rounded-full bg-primary shadow-md">
                         <CheckCircle className="h-4 w-4 text-primary-foreground" />
                       </div>
                     )}

@@ -50,7 +50,7 @@ export function SplashScreen({ onComplete, duration = 2500 }: SplashScreenProps)
         <img
           src={splashWatermark}
           alt=""
-          className="w-[120%] h-[120%] object-contain opacity-10 dark:opacity-15 animate-watermark-float"
+          className="w-[130%] h-[130%] object-contain opacity-[0.18] dark:opacity-[0.25] animate-watermark-float"
         />
       </div>
 
