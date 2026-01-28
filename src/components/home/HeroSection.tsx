@@ -46,12 +46,12 @@ export function HeroSection() {
             
             {/* CTA Buttons */}
             <div className="flex flex-wrap items-center gap-3">
-              <Button size="lg" className="gradient-primary h-12 px-6 text-sm font-semibold rounded-xl btn-glow">
+              <Button size="lg" className="gradient-primary h-12 px-6 text-sm font-semibold rounded-full btn-glow">
                 Sign up as a vendor
               </Button>
               <Button 
                 size="lg" 
-                className="h-12 px-6 text-sm font-semibold rounded-xl gradient-primary btn-glow"
+                className="h-12 px-6 text-sm font-semibold rounded-full gradient-primary btn-glow"
               >
                 Create listing
               </Button>
