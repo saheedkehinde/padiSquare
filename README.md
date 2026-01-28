@@ -3,7 +3,7 @@
 A multi-vendor marketplace application built as a technical assignment demonstrating multi-tenant routing, vendor-specific branding, and product discovery features.
 
 **Author:** Saheed Kehinde  
-**Live Demo:** [padisquare.lovable.app](https://padisquare.lovable.app)
+**Live Demo:** [padisquare.vercel.app](https://padisquare.vercel.app)
 
 ---
 
