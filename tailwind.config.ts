@@ -101,6 +101,10 @@ export default {
           "0%": { backgroundPosition: "-200% 0" },
           "100%": { backgroundPosition: "200% 0" },
         },
+        "watermark-float": {
+          "0%, 100%": { transform: "scale(1.2) translateY(0%)" },
+          "50%": { transform: "scale(1.25) translateY(-2%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -109,6 +113,7 @@ export default {
         "slide-in": "slide-in 0.3s ease-out",
         "scale-in": "scale-in 0.2s ease-out",
         shimmer: "shimmer 2s infinite linear",
+        "watermark-float": "watermark-float 20s ease-in-out infinite",
       },
     },
   },
