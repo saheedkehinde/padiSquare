@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import padisLogoDark from "@/assets/padis-logo-dark.svg";
-import padisLogoLight from "@/assets/padis-logo-light.svg";
-import { useTheme } from "@/hooks/useTheme";
+import { useIsMobile } from "@/hooks/use-mobile";
+import splashLogo from "@/assets/padis-logo-splash.svg";
+import splashWatermark from "@/assets/splash-watermark.png";
 
 interface SplashScreenProps {
   onComplete: () => void;
@@ -11,9 +11,17 @@ interface SplashScreenProps {
 export function SplashScreen({ onComplete, duration = 2500 }: SplashScreenProps) {
   const [isVisible, setIsVisible] = useState(true);
   const [isFading, setIsFading] = useState(false);
-  const { theme } = useTheme();
+  const isMobile = useIsMobile();
 
   useEffect(() => {
+    // Skip splash on desktop (screen width > 1024px)
+    const isDesktop = window.innerWidth > 1024;
+    if (isDesktop) {
+      setIsVisible(false);
+      onComplete();
+      return;
+    }
+
     const fadeTimer = setTimeout(() => {
       setIsFading(true);
     }, duration - 500);
@@ -31,22 +39,29 @@ export function SplashScreen({ onComplete, duration = 2500 }: SplashScreenProps)
 
   if (!isVisible) return null;
 
-  const logo = theme === "dark" ? padisLogoLight : padisLogoDark;
-
   return (
     <div
       className={`fixed inset-0 z-50 flex flex-col items-center justify-center gradient-hero transition-opacity duration-500 ${
         isFading ? "opacity-0" : "opacity-100"
       }`}
     >
+      {/* Background Watermark */}
+      <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none">
+        <img
+          src={splashWatermark}
+          alt=""
+          className="w-[120%] h-[120%] object-contain opacity-10 dark:opacity-15 animate-watermark-float"
+        />
+      </div>
+
       {/* Logo */}
-      <div className="mb-8 animate-fade-in">
-        <img src={logo} alt="PadiSquare" className="h-16 md:h-20" />
+      <div className="relative z-10 mb-8 animate-fade-in">
+        <img src={splashLogo} alt="PadiSquare" className="h-12 md:h-16" />
       </div>
 
       {/* Tagline with gradient text */}
-      <div className="text-center px-6 animate-fade-in" style={{ animationDelay: "0.3s" }}>
-        <h2 className="text-xl md:text-2xl lg:text-3xl font-bold tracking-tight splash-gradient-text">
+      <div className="relative z-10 text-center px-6 animate-fade-in" style={{ animationDelay: "0.3s" }}>
+        <h2 className="text-xl md:text-2xl font-bold tracking-tight splash-gradient-text">
           Connect. Trade. Thrive.
         </h2>
         <p className="mt-3 text-sm md:text-base text-muted-foreground max-w-md">
@@ -55,7 +70,7 @@ export function SplashScreen({ onComplete, duration = 2500 }: SplashScreenProps)
       </div>
 
       {/* Loading indicator */}
-      <div className="mt-12 animate-fade-in" style={{ animationDelay: "0.6s" }}>
+      <div className="relative z-10 mt-12 animate-fade-in" style={{ animationDelay: "0.6s" }}>
         <div className="flex gap-1.5">
           <div className="w-2 h-2 rounded-full bg-primary animate-bounce" style={{ animationDelay: "0ms" }} />
           <div className="w-2 h-2 rounded-full bg-primary animate-bounce" style={{ animationDelay: "150ms" }} />
