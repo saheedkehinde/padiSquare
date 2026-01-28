@@ -8,6 +8,7 @@ import { ThemeProvider } from "@/hooks/useTheme";
 import { SplashScreen } from "@/components/SplashScreen";
 import Index from "./pages/Index";
 import VendorSite from "./pages/VendorSite";
+import Vendors from "./pages/Vendors";
 import Products from "./pages/Products";
 import Search from "./pages/Search";
 import Messages from "./pages/Messages";
@@ -30,6 +31,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/products" element={<Products />} />
+              <Route path="/vendors" element={<Vendors />} />
               <Route path="/search" element={<Search />} />
               <Route path="/messages" element={<Messages />} />
               <Route path="/profile" element={<Profile />} />
