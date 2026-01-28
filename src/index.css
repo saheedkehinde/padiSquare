@@ -55,10 +55,10 @@
     --shadow-card: 0 2px 8px -2px hsl(145 10% 20% / 0.08), 0 4px 16px -4px hsl(145 10% 20% / 0.06);
     --shadow-elevated: 0 20px 25px -5px hsl(145 10% 20% / 0.1), 0 8px 10px -6px hsl(145 10% 20% / 0.08);
     
-    /* Glow Effects - Subtle */
-    --glow-primary: 0 0 10px hsl(145 78% 35% / 0.2), 0 0 20px hsl(145 78% 35% / 0.1);
-    --glow-primary-hover: 0 0 15px hsl(145 78% 35% / 0.3), 0 0 30px hsl(145 78% 35% / 0.15);
-    --glow-card: 0 0 10px hsl(145 78% 35% / 0.1), 0 0 20px hsl(145 78% 35% / 0.05);
+    /* Glow Effects - Disabled */
+    --glow-primary: none;
+    --glow-primary-hover: none;
+    --glow-card: none;
 
     /* Sidebar */
     --sidebar-background: 0 0% 100%;
@@ -113,10 +113,10 @@
     --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.5), 0 4px 6px -4px hsl(0 0% 0% / 0.4);
     --shadow-card: 0 2px 8px -2px hsl(0 0% 0% / 0.4), 0 4px 16px -4px hsl(0 0% 0% / 0.3);
     
-    /* Glow Effects - Subtle */
-    --glow-primary: 0 0 10px hsl(145 78% 45% / 0.25), 0 0 20px hsl(145 78% 45% / 0.12);
-    --glow-primary-hover: 0 0 15px hsl(145 78% 45% / 0.35), 0 0 30px hsl(145 78% 45% / 0.18);
-    --glow-card: 0 0 10px hsl(145 78% 45% / 0.1), 0 0 20px hsl(145 78% 45% / 0.06);
+    /* Glow Effects - Disabled */
+    --glow-primary: none;
+    --glow-primary-hover: none;
+    --glow-card: none;
     
     --sidebar-background: 148 100% 9%;
     --sidebar-foreground: 150 10% 95%;
@@ -149,22 +149,14 @@
     letter-spacing: -0.011em;
   }
 
-  /* Headings - Neon Green Gradient with Glow */
+  /* Headings - Deep green in light mode, white in dark mode */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading tracking-tight;
+    @apply font-heading tracking-tight text-primary;
     line-height: 1.2;
-    background: linear-gradient(135deg, #6CFF9A 0%, #16C784 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
   }
 
-  h1, h2, h3 {
-    filter: drop-shadow(0 0 8px rgba(108, 255, 154, 0.3)) drop-shadow(0 0 20px rgba(22, 199, 132, 0.2));
-  }
-
-  .dark h1, .dark h2, .dark h3 {
-    filter: drop-shadow(0 0 12px rgba(108, 255, 154, 0.4)) drop-shadow(0 0 30px rgba(22, 199, 132, 0.25));
+  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+    @apply text-white;
   }
 
   h1 {
@@ -197,9 +189,9 @@
     letter-spacing: -0.005em;
   }
 
-  /* Paragraphs & Body Text */
+  /* Paragraphs & Body Text - Deep green in light, white in dark */
   p {
-    @apply text-muted-foreground leading-relaxed;
+    @apply text-foreground leading-relaxed;
   }
 
   /* Small text */
