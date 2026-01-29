@@ -5,7 +5,7 @@ A multi-vendor marketplace application built as a technical assignment demonstra
 **Author:** Saheed Kehinde  
 **Live Demo:** [padisquare.vercel.app](https://padisquare.vercel.app)
 
-This Project was previosly built on react 18 + vite and conversion to Next.js  is in the process and will be ready as soon as possible.
+This Project was previously built with react 18 + vite and its conversion to Next.js  is in the process and will be ready as soon as possible.
 ---
 
 ## 📋 Project Overview
