@@ -12,13 +12,14 @@ dist
 dist-ssr
 *.local
 
-# Editor directories and files
+# Editor directories mostly and files
 .vscode/*
 !.vscode/extensions.json
 .idea
 .DS_Store
 *.suo
 *.ntvs*
+ 
 *.njsproj
 *.sln
 *.sw?
